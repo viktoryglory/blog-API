@@ -147,3 +147,13 @@ blog-api/
 └── run.py                   # Application entry point
 ```
 
+# 🔐 API Endpoints
+
+## Authentication Endpoints
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| <GET> | </posts> | Get all posts | ❌ |
+| <GET> | </posts/<id> | Get single post | ❌ |
+| <POST> | </posts> | Create new post | ✅ |
+| <PUT> | </posts/<id>> | Update post | ✅ (User/Admin) |
+| <DELETE> | </posts/<id>> | Delete post | ✅ (User/Admin) |
