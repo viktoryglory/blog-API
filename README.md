@@ -82,7 +82,7 @@ Your API will be running at http://localhost:5000 🎉
 ## 📦 Installation
 
 ### Step-by-Step Guide
-# 1. Create project directory
+## 1. Create project directory
 ```bash
 mkdir blog-api
 cd blog-api
@@ -98,3 +98,52 @@ python -m venv venv
 python3 -m venv venv
 source venv/bin/activate
 ```
+
+## 3. Install dependencies
+```bash
+pip install flask==2.3.3 flask-sqlalchemy==3.0.5 flask-migrate==4.0.5
+pip install flask-jwt-extended==4.5.3 flask-cors==4.0.0
+pip install bcrypt==4.0.1 python-dotenv==1.0.0
+```
+
+## 4. Or use requirements.txt
+```bash
+pip install -r requirements.txt
+```
+
+## ⚙️ Configuration
+## Environment Variables
+
+Create a .env file in the root directory:
+```bash
+# Database Configuration
+DATABASE_URL=sqlite:///app.db
+
+# JWT Configuration
+SECRET_KEY=your-super-secret-key-change-in-production
+JWT_SECRET_KEY=your-jwt-secret-key-change-in-production
+
+# Flask Configuration
+FLASK_APP=run.py
+FLASK_ENV=development
+FLASK_DEBUG=1
+```
+
+## Project Structure
+```text
+blog-api/
+├── app/
+│   ├── __init__.py          # Flask app factory
+│   ├── auth.py              # Authentication routes
+│   ├── models.py            # Database models
+│   ├── routes.py            # Main API routes
+│   └── utils.py             # Utility functions
+├── migrations/              # Database migrations
+├── tests/                   # Test files
+├── .env                     # Environment variables
+├── config.py                # Configuration settings
+├── init_data.py             # Database initialization
+├── requirements.txt         # Dependencies
+└── run.py                   # Application entry point
+```
+
