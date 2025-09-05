@@ -152,8 +152,175 @@ blog-api/
 ## Authentication Endpoints
 | Method | Endpoint | Description | Auth Required |
 |--------|----------|-------------|---------------|
-| GET | /posts> | Get all posts | ❌ |
+| GET | /posts | Get all posts | ❌ |
 | GET | /posts/<id> | Get single post | ❌ |
-| POST | /posts> | Create new post | ✅ |
+| POST | /posts | Create new post | ✅ |
 | PUT | /posts/<id> | Update post | ✅ (User/Admin) |
 | DELETE | /posts/<id> | Delete post | ✅ (User/Admin) |
+
+## Comments Endpoints
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | /posts/<id>/comments | Get post comments | ❌ |
+| POST | /posts/<id>/comments | Create comment | ✅ |
+| DELETE | /comments/<id> | Delete comment | ✅ (User/Admin) |
+
+## Categories Endpoints (Admin Only)
+## Comments Endpoints
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | /categories | Get all categories | ❌ |
+| POST | /categories | Create category | ✅ (Admin) |
+| PUT | /categories/<id> | Update category | ✅ (Admin) |
+| DELETE | //categories/<id> | Delete category | ✅ (Admin) |
+
+## 🎯 Usage Examples
+
+## 🔐 Authentication
+
+**Register a new user:**
+```bash
+curl -X POST http://localhost:5000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "newuser",
+    "email": "newuser@example.com",
+    "password": "password123"
+  }'
+  ```
+
+**Login and get JWT token:**
+```bash
+curl -X POST http://localhost:5000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "admin",
+    "password": "admin123"
+  }'
+```
+
+## 📝 Posts Operations
+
+**Create a new post:**
+```bash
+curl -X POST http://localhost:5000/posts \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "title": "My First Post",
+    "content": "This is the content of my first post",
+    "category_id": 1
+  }'
+```
+
+**Get all posts:**
+```bash
+curl http://localhost:5000/posts
+```
+
+## 💬 Comments Operations
+**Add a comment to post:**
+```bash
+curl -X POST http://localhost:5000/posts/1/comments \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "content": "Great post! Very informative."
+  }'
+```
+
+## 🏷️ Category Operations (Admin Only)
+**Create a new category:**
+```bash
+curl -X POST http://localhost:5000/categories \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ADMIN_JWT_TOKEN" \
+  -d '{
+    "name": "Technology",
+    "description": "Posts about technology and programming"
+  }'
+```
+
+## 🧪 Testing
+**Run Tests**
+```bash
+python -m unittest discover tests
+```
+
+**Test with curl Examples**
+Test authentication:
+```bash
+# Test login
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"admin123"}' \
+  http://localhost:5000/auth/login
+
+# Test protected endpoint
+curl -H "Authorization: Bearer YOUR_TOKEN" \
+  http://localhost:5000/auth/profile
+```
+
+Test posts API:
+```bash
+# Get all posts
+curl http://localhost:5000/posts
+
+# Create a post
+curl -X POST -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{"title":"Test","content":"Test content","category_id":1}' \
+  http://localhost:5000/posts
+```
+
+## 🤝 Contributing
+We welcome contributions! Please follow these steps:
+
+1. Fork the project
+2. Create a feature branch (git checkout -b feature/AmazingFeature)
+3. Commit your changes (git commit -m 'Add some AmazingFeature')
+4. Push to the branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
+
+## Development Setup
+```bash
+# 1. Fork and clone the repository
+git clone https://github.com/your-username/blog-api.git
+cd blog-api
+
+# 2. Set up development environment
+python -m venv venv
+source venv/bin/activate  # or .\venv\Scripts\activate on Windows
+
+# 3. Install development dependencies
+pip install -r requirements.txt
+pip install pytest pytest-cov  # for testing
+
+# 4. Run tests
+python -m pytest tests/ -v
+
+# 5. Make your changes and test
+```
+
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+If you have any questions or need help:
+
+1. Check the API Documentation
+2. Look at existing Issues
+3. Create a new Issue
+4. Email: feriyasin01@gmail.com
+
+<div align="center">
+⭐ Don't forget to star this repository if you find it useful!
+
+https://api.star-history.com/svg?repos=your-username/blog-api&type=Date
+
+</div>
+
+## 🙏 Acknowledgments
++ Flask community for the excellent framework
++ JWT team for authentication solution
++ SQLAlchemy for ORM capabilities
++ All contributors who helped improve this project
