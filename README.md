@@ -74,3 +74,27 @@ python init_data.py
 
 # Run the application
 python run.py
+
+```
+
+Your API will be running at http://localhost:5000 🎉
+
+## 📦 Installation
+
+### Step-by-Step Guide
+# 1. Create project directory
+```bash
+mkdir blog-api
+cd blog-api
+```
+
+### 2. Set up virtual environment
+```bash
+# Windows
+python -m venv venv
+.\venv\Scripts\activate
+
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+```
