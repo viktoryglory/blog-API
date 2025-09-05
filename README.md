@@ -23,7 +23,6 @@
 - [🎯 Usage Examples](#-usage-examples)
 - [🧪 Testing](#-testing)
 - [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
 
 ## ✨ Features
 
@@ -300,9 +299,6 @@ python -m pytest tests/ -v
 
 # 5. Make your changes and test
 ```
-
-## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🆘 Support
 If you have any questions or need help:
